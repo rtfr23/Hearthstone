@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.enemy{
+			margin-top: 100px;
+			text-align:center;
+			height: 250px;
+					}
+		.player_img{
+			width:200px;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			background-size: 100% 100%;
+			position: relative;
+			transition: 2s;
+		}
+		.player_img2 {
+			width:200px;
+			height: 300px;
+			background-size: 100% 100%;
+			position: absolute;
+			transition: 2s;
+			left: 500px;
+			bottom: 100px;
+		}
+		.player_img3 {
+			width:200px;
+			height: 300px;
+			background-size: 100% 100%;
+			position: absolute;
+			transition: 2s;
+			left: 1300px;
+			bottom: 100px;
+		}
+		.enemy_img{
+			width:200px;
+			height: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			background-size: 100% 100%;
+			position: relative;
+			transition: 2s;
+		}
+		.enemy_img2{
+			width:200px;
+			height: 300px;
+			background-size: 100% 100%;
+			transition: 2s;
+			position: absolute;
+			left: 500px;
+			top: 100px;
+		}
+		.enemy_img3{
+			width:200px;
+			height: 300px;
+			background-size: 100% 100%;
+			transition: 2s;
+			position: absolute;
+			left: 1300px;
+			top: 100px;
+		}
+		.player {
+			text-align: center;
+			height: 250px;
+			margin-top: 150px;
+		}
+		.player_property{
+			position: absolute;
+			top:80%;
+
+		}
+		.enemy_name{
+			color: white; font-family: Arial;
+		}
+		.player_name{
+			color: white; font-family: Arial
+		}
+	</style>
+</head>
+<body style="background-image: url(bg.jpg); background-size: 100% ">
+
+	<div class="enemy">
+		<h1 class="enemy_name"></h1>
+
+		<div class="enemy_img" style="background-image: url(1.png);">
+			<h2 class="enemy_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="enemy_damage player_property" style="left: 82%;">0</h2>
+		</div>	
+
+	</div>
+
+	<div class="enemy2">
+		<h1 class="enemy_name"></h1>
+		<div class="enemy_img2" style="background-image: url(3.png);">
+			<h2 class="enemy_hp2 player_property" style="left: 10%;">0</h2>
+			<h2 class="enemy_damage2 player_property" style="left: 82%;">0</h2>
+		</div>	
+	</div>
+
+	<div class="enemy3">
+		<h1 class="enemy_name"></h1>
+		<div class="enemy_img3" style="background-image: url(5.png);">
+			<h2 class="enemy_hp3 player_property" style="left: 10%;">0</h2>
+			<h2 class="enemy_damage3 player_property" style="left: 82%;">0</h2>
+		</div>	
+	</div>
+
+	</div>
+
+	<div class="player">
+		<h1 class="player_name"></h1>
+		
+		<div class="player_img" style="background-image: url(2.png);">
+			<h2 class="player_hp player_property" style="left: 10%;">0</h2>
+			<h2 class="player_damage player_property" style="left: 82%;">0</h2>
+		</div>
+
+	</div>
+
+	<div class="player2">
+		<h1 class="player_name"></h1>
+		<div class="player_img2" style="background-image: url(4.png);">
+			<h2 class="player_hp2 player_property" style="left: 10%;">0</h2>
+			<h2 class="player_damage2 player_property" style="left: 82%;">0</h2>
+		</div>
+	</div>
+
+	<div class="player3">
+		<h1 class="player_name"></h1>
+		<div class="player_img3" style="background-image: url(6.png);">
+			<h2 class="player_hp3 player_property" style="left: 10%;">0</h2>
+			<h2 class="player_damage3 player_property" style="left: 82%;">0</h2>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let plName = document.querySelector(".player_name");
+		let enName = document.querySelector(".enemy_name");
+
+		let player = document.querySelector(".player_img");
+		let enemy = document.querySelector(".enemy_img");
+
+		let player2 = document.querySelector(".player_img2");
+		let enemy2 = document.querySelector(".enemy_img2");
+
+		let player3 = document.querySelector(".player_img3");
+		let enemy3 = document.querySelector(".enemy_img3");
+  
+		let plHp = document.querySelector(".player_hp");
+		let enHp = document.querySelector(".enemy_hp");
+
+		let plDmg = document.querySelector(".player_damage");
+		let enDmg = document.querySelector(".enemy_damage");
+
+		let plHp2 = document.querySelector(".player_hp2");
+		let enHp2 = document.querySelector(".enemy_hp2");
+
+		let plDmg2 = document.querySelector(".player_damage2");
+		let enDmg2 = document.querySelector(".enemy_damage2");
+
+		let plHp3 = document.querySelector(".player_hp3");
+		let enHp3 = document.querySelector(".enemy_hp3");
+
+		let plDmg3 = document.querySelector(".player_damage3");
+		let enDmg3 = document.querySelector(".enemy_damage3");
+
+
+		enName.innerHTML = 'Враг';
+		plName.innerHTML = 'Игрок';
+
+		let getRandom = function(){
+			let num = Math.random() * 10;
+			let roundNum = Math.round(num);
+			return roundNum;
+		}
+		let getRandomPic = function(){
+			let num = Math.random() * 9;
+			let roundNum = Math.round(num);
+			return roundNum;
+		}
+		// Изменчивая тень
+		let user = {
+			hp: getRandom(),
+			dmg: getRandom(),
+			img: getRandomPic()
+		}
+		// Хамелеос
+		let user2 = {
+			hp: getRandom(),
+			dmg: getRandom()
+		}
+		// принц Малчеза
+		let user3 = {
+			hp: getRandom(),
+			dmg: getRandom(),
+			img: getRandomPic()
+		}
+		// Церемониймейстер
+		let user4 = {
+			hp: getRandom(),
+			dmg: getRandom()
+		}
+		// Дживс
+		let user5 = {
+			hp: getRandom(),
+			dmg: getRandom(),
+			img: getRandomPic()
+		}
+		// Иллидан ярость бури
+		let user6 = {
+			hp: getRandom(),
+			dmg: getRandom()
+		}
+		
+		let attack = function(){
+			let pl_hp = user.hp + user5.hp + user3.hp;
+			let en_hp = user2.hp + user4.hp + user6.hp;
+			let pl_dmg = user.dmg + user5.dmg + user3.dmg;
+			let en_dmg = user2.dmg + user4.dmg + user6.dmg;
+			pl_hp = en_dmg - pl_hp;
+			pl_dmg = pl_dmg - en_hp;
+			if(pl_hp < en_hp){
+				enName.innerHTML = 'Враг проиграл';
+				enemy.style.opacity = 0;
+				enemy2.style.opacity = 0;
+				enemy3.style.opacity = 0;
+			}
+			if(en_hp < pl_hp){
+				plName.innerHTML = 'Игрок проиграл';
+				player.style.opacity = 0;
+				player2.style.opacity = 0;
+				player3.style.opacity = 0;
+			}
+		}
+		// user3 playerhp3
+		// user 4 enemyhp 2 
+		// user 5 playerhp 2
+		// user 6 enemy hp 3
+		plHp.innerHTML = user.hp;
+		enHp.innerHTML = user2.hp;
+
+		plDmg.innerHTML = user.dmg;
+    	enDmg.innerHTML = user2.dmg;
+
+    	plHp3.innerHTML = user3.hp;
+		enHp2.innerHTML = user4.hp;
+
+		plDmg2.innerHTML = user5.dmg;
+    	enDmg2.innerHTML = user4.dmg;
+
+    	plHp2.innerHTML = user5.hp;
+		enHp3.innerHTML = user6.hp;
+
+		plDmg3.innerHTML = user3.dmg;
+    	enDmg3.innerHTML = user6.dmg;
+
+    	setTimeout(attack, 5000)
+
+	</script>
+</body>
+</html>
